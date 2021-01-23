@@ -1,0 +1,494 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.7
+//  \   \         Application : sch2hdl
+//  /   /         Filename : EIGHTCROSSFOUR_MULTIPLIER.vf
+// /___/   /\     Timestamp : 06/18/2019 14:35:00
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog "E:/New folder (2)/ALU/EIGHTCROSSFOUR_MULTIPLIER.vf" -w "E:/New folder (2)/ALU/EIGHTCROSSFOUR_MULTIPLIER.sch"
+//Design Name: EIGHTCROSSFOUR_MULTIPLIER
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module HALFADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER(A, 
+                                                 B, 
+                                                 RESET, 
+                                                 CARRY1, 
+                                                 SUM1);
+
+    input A;
+    input B;
+    input RESET;
+   output CARRY1;
+   output SUM1;
+   
+   wire CARRY;
+   wire SUM;
+   
+   AND2  XLXI_1 (.I0(A), 
+                .I1(B), 
+                .O(CARRY));
+   XOR2  XLXI_2 (.I0(B), 
+                .I1(A), 
+                .O(SUM));
+   AND2  XLXI_3 (.I0(RESET), 
+                .I1(SUM), 
+                .O(SUM1));
+   AND2  XLXI_4 (.I0(CARRY), 
+                .I1(RESET), 
+                .O(CARRY1));
+endmodule
+`timescale 1ns / 1ps
+
+module FULLADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER(A, 
+                                                 B, 
+                                                 CIN, 
+                                                 RESET, 
+                                                 OROUT, 
+                                                 SUMOUT);
+
+    input A;
+    input B;
+    input CIN;
+    input RESET;
+   output OROUT;
+   output SUMOUT;
+   
+   wire XLXN_4;
+   wire XLXN_6;
+   wire XLXN_7;
+   
+   HALFADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_1 (.A(B), 
+                                                     .B(A), 
+                                                     .RESET(RESET), 
+                                                     .CARRY1(XLXN_7), 
+                                                     .SUM1(XLXN_4));
+   HALFADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_2 (.A(CIN), 
+                                                     .B(XLXN_4), 
+                                                     .RESET(RESET), 
+                                                     .CARRY1(XLXN_6), 
+                                                     .SUM1(SUMOUT));
+   OR2  XLXI_3 (.I0(XLXN_7), 
+               .I1(XLXN_6), 
+               .O(OROUT));
+endmodule
+`timescale 1ns / 1ps
+
+module FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER(A0, 
+                                                      A1, 
+                                                      A2, 
+                                                      A3, 
+                                                      B0, 
+                                                      B1, 
+                                                      B2, 
+                                                      B3, 
+                                                      CIN, 
+                                                      RESET, 
+                                                      CAROUT, 
+                                                      I0, 
+                                                      I1, 
+                                                      I2, 
+                                                      I3);
+
+    input A0;
+    input A1;
+    input A2;
+    input A3;
+    input B0;
+    input B1;
+    input B2;
+    input B3;
+    input CIN;
+    input RESET;
+   output CAROUT;
+   output I0;
+   output I1;
+   output I2;
+   output I3;
+   
+   wire COUT;
+   wire S0;
+   wire S1;
+   wire S2;
+   wire S3;
+   wire XLXN_5;
+   wire XLXN_6;
+   wire XLXN_10;
+   
+   FULLADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_1 (.A(A0), 
+                                                     .B(B0), 
+                                                     .CIN(CIN), 
+                                                     .RESET(RESET), 
+                                                     .OROUT(XLXN_5), 
+                                                     .SUMOUT(S0));
+   FULLADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_2 (.A(A1), 
+                                                     .B(B1), 
+                                                     .CIN(XLXN_5), 
+                                                     .RESET(RESET), 
+                                                     .OROUT(XLXN_6), 
+                                                     .SUMOUT(S1));
+   FULLADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_4 (.A(A3), 
+                                                     .B(B3), 
+                                                     .CIN(XLXN_10), 
+                                                     .RESET(RESET), 
+                                                     .OROUT(COUT), 
+                                                     .SUMOUT(S3));
+   FULLADDER_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_5 (.A(A2), 
+                                                     .B(B2), 
+                                                     .CIN(XLXN_6), 
+                                                     .RESET(RESET), 
+                                                     .OROUT(XLXN_10), 
+                                                     .SUMOUT(S2));
+   AND2  XLXI_6 (.I0(RESET), 
+                .I1(S0), 
+                .O(I0));
+   AND2  XLXI_7 (.I0(RESET), 
+                .I1(S1), 
+                .O(I1));
+   AND2  XLXI_8 (.I0(RESET), 
+                .I1(S2), 
+                .O(I2));
+   AND2  XLXI_9 (.I0(RESET), 
+                .I1(S3), 
+                .O(I3));
+   AND2  XLXI_10 (.I0(RESET), 
+                 .I1(COUT), 
+                 .O(CAROUT));
+endmodule
+`timescale 1ns / 1ps
+
+module EIGHTCROSSFOUR_MULTIPLIER(A0, 
+                                 A1, 
+                                 A2, 
+                                 A3, 
+                                 A4, 
+                                 A5, 
+                                 A6, 
+                                 A7, 
+                                 B0, 
+                                 B1, 
+                                 B2, 
+                                 B3, 
+                                 RESET, 
+                                 P0, 
+                                 P1, 
+                                 P2, 
+                                 P3, 
+                                 P4, 
+                                 P5, 
+                                 P6, 
+                                 P7, 
+                                 P8, 
+                                 P9, 
+                                 P10, 
+                                 P11);
+
+    input A0;
+    input A1;
+    input A2;
+    input A3;
+    input A4;
+    input A5;
+    input A6;
+    input A7;
+    input B0;
+    input B1;
+    input B2;
+    input B3;
+    input RESET;
+   output P0;
+   output P1;
+   output P2;
+   output P3;
+   output P4;
+   output P5;
+   output P6;
+   output P7;
+   output P8;
+   output P9;
+   output P10;
+   output P11;
+   
+   wire XLXN_1;
+   wire XLXN_2;
+   wire XLXN_3;
+   wire XLXN_4;
+   wire XLXN_5;
+   wire XLXN_6;
+   wire XLXN_7;
+   wire XLXN_8;
+   wire XLXN_34;
+   wire XLXN_35;
+   wire XLXN_36;
+   wire XLXN_37;
+   wire XLXN_38;
+   wire XLXN_39;
+   wire XLXN_40;
+   wire XLXN_41;
+   wire XLXN_48;
+   wire XLXN_49;
+   wire XLXN_50;
+   wire XLXN_51;
+   wire XLXN_58;
+   wire XLXN_65;
+   wire XLXN_69;
+   wire XLXN_70;
+   wire XLXN_81;
+   wire XLXN_82;
+   wire XLXN_83;
+   wire XLXN_86;
+   wire XLXN_87;
+   wire XLXN_88;
+   wire XLXN_89;
+   wire XLXN_113;
+   wire XLXN_114;
+   wire XLXN_116;
+   wire XLXN_117;
+   wire XLXN_118;
+   wire XLXN_123;
+   wire XLXN_124;
+   wire XLXN_125;
+   wire XLXN_126;
+   wire XLXN_132;
+   wire XLXN_134;
+   wire XLXN_135;
+   wire XLXN_136;
+   wire XLXN_149;
+   wire XLXN_150;
+   wire XLXN_151;
+   wire XLXN_152;
+   wire XLXN_165;
+   wire XLXN_166;
+   wire XLXN_167;
+   wire XLXN_168;
+   wire XLXN_175;
+   wire XLXN_176;
+   wire XLXN_177;
+   wire XLXN_179;
+   wire XLXN_196;
+   wire XLXN_198;
+   wire XLXN_199;
+   wire XLXN_200;
+   wire XLXN_201;
+   wire XLXN_202;
+   
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_1 (.A0(XLXN_8), 
+                                                          .A1(XLXN_7), 
+                                                          .A2(XLXN_6), 
+                                                          .A3(XLXN_5), 
+                                                          .B0(XLXN_4), 
+                                                          .B1(XLXN_3), 
+                                                          .B2(XLXN_2), 
+                                                          .B3(XLXN_1), 
+                                                          .CIN(XLXN_8), 
+                                                          .RESET(RESET), 
+                                                          .CAROUT(XLXN_38), 
+                                                          .I0(P1), 
+                                                          .I1(XLXN_41), 
+                                                          .I2(XLXN_40), 
+                                                          .I3(XLXN_39));
+   AND2  XLXI_2 (.I0(A0), 
+                .I1(B1), 
+                .O(XLXN_3));
+   AND2  XLXI_3 (.I0(A0), 
+                .I1(B2), 
+                .O(XLXN_2));
+   AND2  XLXI_4 (.I0(A1), 
+                .I1(B1), 
+                .O(XLXN_7));
+   AND2  XLXI_5 (.I0(A0), 
+                .I1(B0), 
+                .O(XLXN_4));
+   AND2  XLXI_6 (.I0(A0), 
+                .I1(B3), 
+                .O(XLXN_1));
+   AND2  XLXI_7 (.I0(A1), 
+                .I1(B2), 
+                .O(XLXN_6));
+   AND2  XLXI_8 (.I0(A1), 
+                .I1(B3), 
+                .O(XLXN_5));
+   AND3  XLXI_9 (.I0(A1), 
+                .I1(B0), 
+                .I2(RESET), 
+                .O(P0));
+   GND  XLXI_10 (.G(XLXN_8));
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_11 (.A0(XLXN_41), 
+                                                           .A1(XLXN_40), 
+                                                           .A2(XLXN_39), 
+                                                           .A3(XLXN_38), 
+                                                           .B0(XLXN_37), 
+                                                           .B1(XLXN_36), 
+                                                           .B2(XLXN_35), 
+                                                           .B3(XLXN_34), 
+                                                           .CIN(XLXN_196), 
+                                                           .RESET(RESET), 
+                                                           .CAROUT(XLXN_69), 
+                                                           .I0(P2), 
+                                                           .I1(XLXN_58), 
+                                                           .I2(XLXN_70), 
+                                                           .I3(XLXN_65));
+   AND2  XLXI_12 (.I0(A2), 
+                 .I1(B3), 
+                 .O(XLXN_34));
+   AND2  XLXI_13 (.I0(A2), 
+                 .I1(B2), 
+                 .O(XLXN_35));
+   AND2  XLXI_14 (.I0(A2), 
+                 .I1(B1), 
+                 .O(XLXN_36));
+   AND2  XLXI_15 (.I0(A2), 
+                 .I1(B0), 
+                 .O(XLXN_37));
+   AND2  XLXI_18 (.I0(A3), 
+                 .I1(B3), 
+                 .O(XLXN_48));
+   AND2  XLXI_19 (.I0(A3), 
+                 .I1(B1), 
+                 .O(XLXN_50));
+   AND2  XLXI_20 (.I0(A3), 
+                 .I1(B0), 
+                 .O(XLXN_51));
+   AND2  XLXI_21 (.I0(A3), 
+                 .I1(B2), 
+                 .O(XLXN_49));
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_22 (.A0(XLXN_89), 
+                                                           .A1(XLXN_88), 
+                                                           .A2(XLXN_87), 
+                                                           .A3(XLXN_86), 
+                                                           .B0(XLXN_83), 
+                                                           .B1(XLXN_82), 
+                                                           .B2(XLXN_81), 
+                                                           .B3(XLXN_113), 
+                                                           .CIN(XLXN_199), 
+                                                           .RESET(RESET), 
+                                                           .CAROUT(XLXN_123), 
+                                                           .I0(P4), 
+                                                           .I1(XLXN_126), 
+                                                           .I2(XLXN_125), 
+                                                           .I3(XLXN_124));
+   AND2  XLXI_24 (.I0(B2), 
+                 .I1(A4), 
+                 .O(XLXN_81));
+   AND2  XLXI_25 (.I0(B1), 
+                 .I1(A4), 
+                 .O(XLXN_82));
+   AND2  XLXI_28 (.I0(B0), 
+                 .I1(A4), 
+                 .O(XLXN_83));
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_29 (.A0(XLXN_58), 
+                                                           .A1(XLXN_70), 
+                                                           .A2(XLXN_65), 
+                                                           .A3(XLXN_69), 
+                                                           .B0(XLXN_51), 
+                                                           .B1(XLXN_50), 
+                                                           .B2(XLXN_49), 
+                                                           .B3(XLXN_48), 
+                                                           .CIN(XLXN_198), 
+                                                           .RESET(RESET), 
+                                                           .CAROUT(XLXN_86), 
+                                                           .I0(P3), 
+                                                           .I1(XLXN_89), 
+                                                           .I2(XLXN_88), 
+                                                           .I3(XLXN_87));
+   AND2  XLXI_30 (.I0(B1), 
+                 .I1(A5), 
+                 .O(XLXN_117));
+   AND2  XLXI_31 (.I0(B0), 
+                 .I1(A5), 
+                 .O(XLXN_118));
+   AND2  XLXI_32 (.I0(B3), 
+                 .I1(A6), 
+                 .O(XLXN_132));
+   AND2  XLXI_33 (.I0(B3), 
+                 .I1(A5), 
+                 .O(XLXN_114));
+   AND2  XLXI_34 (.I0(B2), 
+                 .I1(A5), 
+                 .O(XLXN_116));
+   AND2  XLXI_35 (.I0(B2), 
+                 .I1(A6), 
+                 .O(XLXN_134));
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_38 (.A0(XLXN_126), 
+                                                           .A1(XLXN_125), 
+                                                           .A2(XLXN_124), 
+                                                           .A3(XLXN_123), 
+                                                           .B0(XLXN_118), 
+                                                           .B1(XLXN_117), 
+                                                           .B2(XLXN_116), 
+                                                           .B3(XLXN_114), 
+                                                           .CIN(XLXN_200), 
+                                                           .RESET(RESET), 
+                                                           .CAROUT(XLXN_149), 
+                                                           .I0(P5), 
+                                                           .I1(XLXN_152), 
+                                                           .I2(XLXN_151), 
+                                                           .I3(XLXN_150));
+   AND2  XLXI_39 (.I0(B3), 
+                 .I1(A4), 
+                 .O(XLXN_113));
+   AND2  XLXI_41 (.I0(B1), 
+                 .I1(A6), 
+                 .O(XLXN_135));
+   AND2  XLXI_42 (.I0(B0), 
+                 .I1(A6), 
+                 .O(XLXN_136));
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_46 (.A0(XLXN_152), 
+                                                           .A1(XLXN_151), 
+                                                           .A2(XLXN_150), 
+                                                           .A3(XLXN_149), 
+                                                           .B0(XLXN_136), 
+                                                           .B1(XLXN_135), 
+                                                           .B2(XLXN_134), 
+                                                           .B3(XLXN_132), 
+                                                           .CIN(XLXN_201), 
+                                                           .RESET(RESET), 
+                                                           .CAROUT(XLXN_175), 
+                                                           .I0(P6), 
+                                                           .I1(XLXN_179), 
+                                                           .I2(XLXN_177), 
+                                                           .I3(XLXN_176));
+   FOUR_BITADDER3_MUSER_EIGHTCROSSFOUR_MULTIPLIER  XLXI_48 (.A0(XLXN_179), 
+                                                           .A1(XLXN_177), 
+                                                           .A2(XLXN_176), 
+                                                           .A3(XLXN_175), 
+                                                           .B0(XLXN_168), 
+                                                           .B1(XLXN_167), 
+                                                           .B2(XLXN_166), 
+                                                           .B3(XLXN_165), 
+                                                           .CIN(XLXN_202), 
+                                                           .RESET(RESET), 
+                                                           .CAROUT(P11), 
+                                                           .I0(P7), 
+                                                           .I1(P8), 
+                                                           .I2(P9), 
+                                                           .I3(P10));
+   AND2  XLXI_49 (.I0(A7), 
+                 .I1(B3), 
+                 .O(XLXN_165));
+   AND2  XLXI_50 (.I0(A7), 
+                 .I1(B2), 
+                 .O(XLXN_166));
+   AND2  XLXI_51 (.I0(A7), 
+                 .I1(B1), 
+                 .O(XLXN_167));
+   AND2  XLXI_52 (.I0(A7), 
+                 .I1(B0), 
+                 .O(XLXN_168));
+   GND  XLXI_53 (.G(XLXN_200));
+   GND  XLXI_55 (.G(XLXN_198));
+   GND  XLXI_56 (.G(XLXN_199));
+   GND  XLXI_57 (.G(XLXN_196));
+   GND  XLXI_58 (.G(XLXN_201));
+   GND  XLXI_59 (.G(XLXN_202));
+endmodule

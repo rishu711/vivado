@@ -1,0 +1,1 @@
+sch2sym -intstyle ise -family artix7 -refsym EIGHT_BITADDER E:/project/schematic/ALU/EIGHT_BITADDER.sch E:/project/schematic/ALU/EIGHT_BITADDER.sym 

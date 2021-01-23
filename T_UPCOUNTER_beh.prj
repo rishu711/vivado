@@ -1,0 +1,6 @@
+verilog work "GATED_LATCH4.vf"
+verilog work "JK_MASTERSLAVE.vf"
+verilog work "T_FLIPFLOP1.vf"
+verilog work "T_UPCOUNTER.vf"
+verilog work "NAND_6.vf"
+verilog work "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v"

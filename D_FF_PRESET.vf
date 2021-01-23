@@ -1,0 +1,137 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.6
+//  \   \         Application : sch2hdl
+//  /   /         Filename : D_FF_PRESET.vf
+// /___/   /\     Timestamp : 07/13/2018 07:38:34
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog E:/project/schematic/ALU/D_FF_PRESET.vf -w E:/project/schematic/ALU/D_FF_PRESET.sch
+//Design Name: D_FF_PRESET
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module GATED_LATCH4_MUSER_D_FF_PRESET(C, 
+                                      D, 
+                                      GATEO);
+
+    input C;
+    input D;
+   output GATEO;
+   
+   wire XLXN_1;
+   
+   OR2  XLXI_1 (.I0(D), 
+               .I1(XLXN_1), 
+               .O(GATEO));
+   INV  XLXI_2 (.I(C), 
+               .O(XLXN_1));
+endmodule
+`timescale 1ns / 1ps
+
+module JK_PRESET_MUSER_D_FF_PRESET(CLK, 
+                                   CLR, 
+                                   J, 
+                                   K, 
+                                   PRESET, 
+                                   Q_A, 
+                                   Q_B);
+
+    input CLK;
+    input CLR;
+    input J;
+    input K;
+    input PRESET;
+   output Q_A;
+   output Q_B;
+   
+   wire XLXN_4;
+   wire XLXN_5;
+   wire XLXN_8;
+   wire XLXN_13;
+   wire XLXN_14;
+   wire XLXN_15;
+   wire XLXN_17;
+   wire XLXN_18;
+   wire XLXN_29;
+   wire Q_A_DUMMY;
+   wire Q_B_DUMMY;
+   
+   assign Q_A = Q_A_DUMMY;
+   assign Q_B = Q_B_DUMMY;
+   GATED_LATCH4_MUSER_D_FF_PRESET  XLXI_1 (.C(CLR), 
+                                          .D(XLXN_4), 
+                                          .GATEO(XLXN_8));
+   GATED_LATCH4_MUSER_D_FF_PRESET  XLXI_2 (.C(CLR), 
+                                          .D(XLXN_15), 
+                                          .GATEO(XLXN_18));
+   NAND3  XLXI_7 (.I0(CLK), 
+                 .I1(J), 
+                 .I2(Q_B_DUMMY), 
+                 .O(XLXN_4));
+   NAND3  XLXI_8 (.I0(Q_A_DUMMY), 
+                 .I1(K), 
+                 .I2(CLK), 
+                 .O(XLXN_5));
+   NAND3  XLXI_9 (.I0(XLXN_5), 
+                 .I1(CLR), 
+                 .I2(XLXN_14), 
+                 .O(XLXN_13));
+   NAND3  XLXI_10 (.I0(PRESET), 
+                  .I1(XLXN_13), 
+                  .I2(XLXN_8), 
+                  .O(XLXN_14));
+   NAND2  XLXI_11 (.I0(XLXN_29), 
+                  .I1(XLXN_14), 
+                  .O(XLXN_15));
+   NAND2  XLXI_12 (.I0(XLXN_13), 
+                  .I1(XLXN_29), 
+                  .O(XLXN_17));
+   NAND3  XLXI_13 (.I0(Q_A_DUMMY), 
+                  .I1(XLXN_17), 
+                  .I2(CLR), 
+                  .O(Q_B_DUMMY));
+   NAND3  XLXI_14 (.I0(PRESET), 
+                  .I1(Q_B_DUMMY), 
+                  .I2(XLXN_18), 
+                  .O(Q_A_DUMMY));
+   INV  XLXI_15 (.I(CLK), 
+                .O(XLXN_29));
+endmodule
+`timescale 1ns / 1ps
+
+module D_FF_PRESET(CLK, 
+                   CLR, 
+                   D, 
+                   PRESET, 
+                   Q, 
+                   Q_B);
+
+    input CLK;
+    input CLR;
+    input D;
+    input PRESET;
+   output Q;
+   output Q_B;
+   
+   wire XLXN_8;
+   
+   JK_PRESET_MUSER_D_FF_PRESET  XLXI_1 (.CLK(CLK), 
+                                       .CLR(CLR), 
+                                       .J(D), 
+                                       .K(XLXN_8), 
+                                       .PRESET(PRESET), 
+                                       .Q_A(Q), 
+                                       .Q_B(Q_B));
+   INV  XLXI_2 (.I(D), 
+               .O(XLXN_8));
+endmodule

@@ -1,0 +1,1 @@
+sch2sym -intstyle ise -family artix7 -refsym EIGHTCROSSFOUR_MULTIPLIER E:/project/schematic/ALU/EIGHTCROSSFOUR_MULTIPLIER.sch E:/project/schematic/ALU/EIGHTCROSSFOUR_MULTIPLIER.sym 

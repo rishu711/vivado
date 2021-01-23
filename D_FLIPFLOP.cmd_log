@@ -1,0 +1,1 @@
+sch2sym -intstyle ise -family artix7 -refsym D_FLIPFLOP E:/project/schematic/ALU/D_FLIPFLOP.sch E:/project/schematic/ALU/D_FLIPFLOP.sym 

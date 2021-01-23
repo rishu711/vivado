@@ -1,0 +1,170 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.6
+//  \   \         Application : sch2hdl
+//  /   /         Filename : T_UPCOUNTER.vf
+// /___/   /\     Timestamp : 06/29/2018 11:50:25
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog E:/project/schematic/ALU/T_UPCOUNTER.vf -w E:/project/schematic/ALU/T_UPCOUNTER.sch
+//Design Name: T_UPCOUNTER
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module GATED_LATCH4_MUSER_T_UPCOUNTER(C, 
+                                      D, 
+                                      GATEO);
+
+    input C;
+    input D;
+   output GATEO;
+   
+   wire XLXN_1;
+   
+   OR2  XLXI_1 (.I0(D), 
+               .I1(XLXN_1), 
+               .O(GATEO));
+   INV  XLXI_2 (.I(C), 
+               .O(XLXN_1));
+endmodule
+`timescale 1ns / 1ps
+
+module JK_MASTERSLAVE_MUSER_T_UPCOUNTER(CLK, 
+                                        CLR, 
+                                        J, 
+                                        K, 
+                                        Qa, 
+                                        Qb);
+
+    input CLK;
+    input CLR;
+    input J;
+    input K;
+   output Qa;
+   output Qb;
+   
+   wire XLXN_8;
+   wire XLXN_9;
+   wire XLXN_12;
+   wire XLXN_15;
+   wire XLXN_17;
+   wire XLXN_18;
+   wire XLXN_19;
+   wire XLXN_21;
+   wire XLXN_26;
+   wire Qa_DUMMY;
+   wire Qb_DUMMY;
+   
+   assign Qa = Qa_DUMMY;
+   assign Qb = Qb_DUMMY;
+   NAND3  XLXI_1 (.I0(CLK), 
+                 .I1(J), 
+                 .I2(Qb_DUMMY), 
+                 .O(XLXN_9));
+   NAND3  XLXI_2 (.I0(Qa_DUMMY), 
+                 .I1(K), 
+                 .I2(CLK), 
+                 .O(XLXN_8));
+   NAND3  XLXI_3 (.I0(XLXN_8), 
+                 .I1(CLR), 
+                 .I2(XLXN_15), 
+                 .O(XLXN_17));
+   GATED_LATCH4_MUSER_T_UPCOUNTER  XLXI_4 (.C(CLR), 
+                                          .D(XLXN_9), 
+                                          .GATEO(XLXN_12));
+   INV  XLXI_5 (.I(CLK), 
+               .O(XLXN_19));
+   NAND2  XLXI_6 (.I0(XLXN_17), 
+                 .I1(XLXN_12), 
+                 .O(XLXN_15));
+   NAND2  XLXI_7 (.I0(XLXN_19), 
+                 .I1(XLXN_15), 
+                 .O(XLXN_21));
+   NAND2  XLXI_8 (.I0(XLXN_17), 
+                 .I1(XLXN_19), 
+                 .O(XLXN_18));
+   GATED_LATCH4_MUSER_T_UPCOUNTER  XLXI_10 (.C(CLR), 
+                                           .D(XLXN_21), 
+                                           .GATEO(XLXN_26));
+   NAND2  XLXI_11 (.I0(Qb_DUMMY), 
+                  .I1(XLXN_26), 
+                  .O(Qa_DUMMY));
+   NAND3  XLXI_13 (.I0(XLXN_18), 
+                  .I1(CLR), 
+                  .I2(Qa_DUMMY), 
+                  .O(Qb_DUMMY));
+endmodule
+`timescale 1ns / 1ps
+
+module T_FLIPFLOP1_MUSER_T_UPCOUNTER(CLK, 
+                                     CLR, 
+                                     T, 
+                                     Qa, 
+                                     Qb);
+
+    input CLK;
+    input CLR;
+    input T;
+   output Qa;
+   output Qb;
+   
+   
+   JK_MASTERSLAVE_MUSER_T_UPCOUNTER  XLXI_1 (.CLK(CLK), 
+                                            .CLR(CLR), 
+                                            .J(T), 
+                                            .K(T), 
+                                            .Qa(Qa), 
+                                            .Qb(Qb));
+endmodule
+`timescale 1ns / 1ps
+
+module T_UPCOUNTER(CLK, 
+                   CLR, 
+                   QB1, 
+                   QB2, 
+                   QB3, 
+                   QB4);
+
+    input CLK;
+    input CLR;
+   output QB1;
+   output QB2;
+   output QB3;
+   output QB4;
+   
+   wire XLXN_1;
+   wire XLXN_5;
+   wire XLXN_6;
+   wire XLXN_8;
+   
+   T_FLIPFLOP1_MUSER_T_UPCOUNTER  XLXI_1 (.CLK(CLK), 
+                                         .CLR(CLR), 
+                                         .T(XLXN_1), 
+                                         .Qa(XLXN_8), 
+                                         .Qb(QB1));
+   T_FLIPFLOP1_MUSER_T_UPCOUNTER  XLXI_2 (.CLK(XLXN_8), 
+                                         .CLR(CLR), 
+                                         .T(XLXN_1), 
+                                         .Qa(XLXN_5), 
+                                         .Qb(QB2));
+   T_FLIPFLOP1_MUSER_T_UPCOUNTER  XLXI_3 (.CLK(XLXN_5), 
+                                         .CLR(CLR), 
+                                         .T(XLXN_1), 
+                                         .Qa(XLXN_6), 
+                                         .Qb(QB3));
+   T_FLIPFLOP1_MUSER_T_UPCOUNTER  XLXI_4 (.CLK(XLXN_6), 
+                                         .CLR(CLR), 
+                                         .T(XLXN_1), 
+                                         .Qa(), 
+                                         .Qb(QB4));
+   VCC  XLXI_5 (.P(XLXN_1));
+endmodule

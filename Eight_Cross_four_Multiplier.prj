@@ -1,0 +1,5 @@
+verilog work "HALFADDER.vf"
+verilog work "FULLADDER.vf"
+verilog work "FOUR_BITADDER2.vf"
+verilog work "EIGHT_BITADDER.vf"
+verilog work "Eight_Cross_four_Multiplier.vf"

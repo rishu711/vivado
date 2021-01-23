@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drawing version="7">
+    <attr value="artix7" name="DeviceFamilyName">
+        <trait delete="all:0" />
+        <trait editname="all:0" />
+        <trait edittrait="all:0" />
+    </attr>
+    <netlist>
+        <signal name="XLXN_1">
+        </signal>
+        <signal name="CLR" />
+        <signal name="CLK" />
+        <signal name="XLXN_5" />
+        <signal name="XLXN_6" />
+        <signal name="XLXN_8" />
+        <signal name="QB1" />
+        <signal name="QB2" />
+        <signal name="QB3" />
+        <signal name="QB4" />
+        <port polarity="Input" name="CLR" />
+        <port polarity="Input" name="CLK" />
+        <port polarity="Output" name="QB1" />
+        <port polarity="Output" name="QB2" />
+        <port polarity="Output" name="QB3" />
+        <port polarity="Output" name="QB4" />
+        <blockdef name="T_FLIPFLOP1">
+            <timestamp>2018-6-29T6:4:24</timestamp>
+            <rect width="256" x="64" y="-192" height="192" />
+            <line x2="0" y1="-160" y2="-160" x1="64" />
+            <line x2="0" y1="-96" y2="-96" x1="64" />
+            <line x2="0" y1="-32" y2="-32" x1="64" />
+            <line x2="384" y1="-160" y2="-160" x1="320" />
+            <line x2="384" y1="-32" y2="-32" x1="320" />
+        </blockdef>
+        <blockdef name="vcc">
+            <timestamp>2000-1-1T10:10:10</timestamp>
+            <line x2="64" y1="-32" y2="-64" x1="64" />
+            <line x2="64" y1="0" y2="-32" x1="64" />
+            <line x2="32" y1="-64" y2="-64" x1="96" />
+        </blockdef>
+        <block symbolname="T_FLIPFLOP1" name="XLXI_1">
+            <blockpin signalname="XLXN_1" name="T" />
+            <blockpin signalname="CLR" name="CLR" />
+            <blockpin signalname="CLK" name="CLK" />
+            <blockpin signalname="XLXN_8" name="Qa" />
+            <blockpin signalname="QB1" name="Qb" />
+        </block>
+        <block symbolname="T_FLIPFLOP1" name="XLXI_2">
+            <blockpin signalname="XLXN_1" name="T" />
+            <blockpin signalname="CLR" name="CLR" />
+            <blockpin signalname="XLXN_8" name="CLK" />
+            <blockpin signalname="XLXN_5" name="Qa" />
+            <blockpin signalname="QB2" name="Qb" />
+        </block>
+        <block symbolname="T_FLIPFLOP1" name="XLXI_3">
+            <blockpin signalname="XLXN_1" name="T" />
+            <blockpin signalname="CLR" name="CLR" />
+            <blockpin signalname="XLXN_5" name="CLK" />
+            <blockpin signalname="XLXN_6" name="Qa" />
+            <blockpin signalname="QB3" name="Qb" />
+        </block>
+        <block symbolname="T_FLIPFLOP1" name="XLXI_4">
+            <blockpin signalname="XLXN_1" name="T" />
+            <blockpin signalname="CLR" name="CLR" />
+            <blockpin signalname="XLXN_6" name="CLK" />
+            <blockpin name="Qa" />
+            <blockpin signalname="QB4" name="Qb" />
+        </block>
+        <block symbolname="vcc" name="XLXI_5">
+            <blockpin signalname="XLXN_1" name="P" />
+        </block>
+    </netlist>
+    <sheet sheetnum="1" width="3520" height="2720">
+        <instance x="304" y="544" name="XLXI_1" orien="R0">
+        </instance>
+        <instance x="976" y="544" name="XLXI_2" orien="R0">
+        </instance>
+        <instance x="1600" y="528" name="XLXI_3" orien="R0">
+        </instance>
+        <instance x="2208" y="528" name="XLXI_4" orien="R0">
+        </instance>
+        <branch name="XLXN_1">
+            <wire x2="160" y1="96" y2="256" x1="160" />
+            <wire x2="160" y1="256" y2="384" x1="160" />
+            <wire x2="304" y1="384" y2="384" x1="160" />
+            <wire x2="752" y1="256" y2="256" x1="160" />
+            <wire x2="752" y1="256" y2="384" x1="752" />
+            <wire x2="976" y1="384" y2="384" x1="752" />
+            <wire x2="1424" y1="256" y2="256" x1="752" />
+            <wire x2="1424" y1="256" y2="368" x1="1424" />
+            <wire x2="1600" y1="368" y2="368" x1="1424" />
+            <wire x2="2048" y1="256" y2="256" x1="1424" />
+            <wire x2="2048" y1="256" y2="368" x1="2048" />
+            <wire x2="2208" y1="368" y2="368" x1="2048" />
+        </branch>
+        <branch name="CLR">
+            <wire x2="240" y1="448" y2="448" x1="144" />
+            <wire x2="304" y1="448" y2="448" x1="240" />
+            <wire x2="240" y1="288" y2="448" x1="240" />
+            <wire x2="720" y1="288" y2="288" x1="240" />
+            <wire x2="720" y1="288" y2="448" x1="720" />
+            <wire x2="832" y1="448" y2="448" x1="720" />
+            <wire x2="976" y1="448" y2="448" x1="832" />
+            <wire x2="832" y1="448" y2="592" x1="832" />
+            <wire x2="1408" y1="592" y2="592" x1="832" />
+            <wire x2="1408" y1="432" y2="592" x1="1408" />
+            <wire x2="1504" y1="432" y2="432" x1="1408" />
+            <wire x2="1600" y1="432" y2="432" x1="1504" />
+            <wire x2="1504" y1="432" y2="544" x1="1504" />
+            <wire x2="2048" y1="544" y2="544" x1="1504" />
+            <wire x2="2048" y1="432" y2="544" x1="2048" />
+            <wire x2="2208" y1="432" y2="432" x1="2048" />
+        </branch>
+        <branch name="CLK">
+            <wire x2="304" y1="512" y2="512" x1="160" />
+        </branch>
+        <iomarker fontsize="28" x="144" y="448" name="CLR" orien="R180" />
+        <iomarker fontsize="28" x="160" y="512" name="CLK" orien="R180" />
+        <branch name="XLXN_5">
+            <wire x2="1472" y1="384" y2="384" x1="1360" />
+            <wire x2="1472" y1="384" y2="496" x1="1472" />
+            <wire x2="1600" y1="496" y2="496" x1="1472" />
+        </branch>
+        <branch name="XLXN_6">
+            <wire x2="2032" y1="368" y2="368" x1="1984" />
+            <wire x2="2032" y1="368" y2="496" x1="2032" />
+            <wire x2="2208" y1="496" y2="496" x1="2032" />
+        </branch>
+        <branch name="XLXN_8">
+            <wire x2="736" y1="384" y2="384" x1="688" />
+            <wire x2="736" y1="384" y2="512" x1="736" />
+            <wire x2="976" y1="512" y2="512" x1="736" />
+        </branch>
+        <branch name="QB1">
+            <wire x2="720" y1="512" y2="512" x1="688" />
+            <wire x2="720" y1="512" y2="608" x1="720" />
+            <wire x2="720" y1="608" y2="608" x1="688" />
+            <wire x2="688" y1="608" y2="768" x1="688" />
+        </branch>
+        <branch name="QB2">
+            <wire x2="1424" y1="512" y2="512" x1="1360" />
+            <wire x2="1424" y1="512" y2="608" x1="1424" />
+            <wire x2="1424" y1="608" y2="608" x1="1360" />
+            <wire x2="1360" y1="608" y2="752" x1="1360" />
+        </branch>
+        <branch name="QB3">
+            <wire x2="2016" y1="496" y2="496" x1="1984" />
+            <wire x2="2016" y1="496" y2="592" x1="2016" />
+            <wire x2="2016" y1="592" y2="592" x1="1984" />
+            <wire x2="1984" y1="592" y2="800" x1="1984" />
+        </branch>
+        <branch name="QB4">
+            <wire x2="2608" y1="496" y2="496" x1="2592" />
+            <wire x2="2608" y1="496" y2="816" x1="2608" />
+        </branch>
+        <iomarker fontsize="28" x="688" y="768" name="QB1" orien="R90" />
+        <iomarker fontsize="28" x="1360" y="752" name="QB2" orien="R90" />
+        <iomarker fontsize="28" x="1984" y="800" name="QB3" orien="R90" />
+        <iomarker fontsize="28" x="2608" y="816" name="QB4" orien="R90" />
+        <instance x="96" y="96" name="XLXI_5" orien="R0" />
+    </sheet>
+</drawing>

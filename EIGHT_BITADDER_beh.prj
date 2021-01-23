@@ -1,0 +1,6 @@
+verilog work "HALFADDER.vf"
+verilog work "FULLADDER.vf"
+verilog work "FOUR_BITADDER2.vf"
+verilog work "EIGHT_BITADDER.vf"
+verilog work "NAND_6.vf"
+verilog work "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v"

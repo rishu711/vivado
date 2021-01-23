@@ -1,0 +1,9 @@
+sch2sym -intstyle ise -family artix7 -refsym Eight_Cross_four_Multiplier E:/project/schematic/ALU/Eight_Cross_four_Multiplier.sch E:/project/schematic/ALU/Eight_Cross_four_Multiplier.sym 
+sch2hdl -intstyle ise -family artix7 -verilog Eight_Cross_four_Multiplier_drc.vf -w E:/project/schematic/ALU/Eight_Cross_four_Multiplier.sch 
+xst -intstyle ise -ifn "E:/project/schematic/ALU/Eight_Cross_four_Multiplier.xst" -ofn "E:/project/schematic/ALU/Eight_Cross_four_Multiplier.syr" 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim Eight_Cross_four_Multiplier.ngc Eight_Cross_four_Multiplier_synthesis.v 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Eight_Cross_four_Multiplier.ucf -p xc7a100t-csg324-1 Eight_Cross_four_Multiplier.ngc Eight_Cross_four_Multiplier.ngd  
+map -intstyle ise -p xc7a100t-csg324-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o Eight_Cross_four_Multiplier_map.ncd Eight_Cross_four_Multiplier.ngd Eight_Cross_four_Multiplier.pcf 
+par -w -intstyle ise -ol high -mt off Eight_Cross_four_Multiplier_map.ncd Eight_Cross_four_Multiplier.ncd Eight_Cross_four_Multiplier.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Eight_Cross_four_Multiplier.twx Eight_Cross_four_Multiplier.ncd -o Eight_Cross_four_Multiplier.twr Eight_Cross_four_Multiplier.pcf -ucf Eight_Cross_four_Multiplier.ucf 
+bitgen -intstyle ise -f Eight_Cross_four_Multiplier.ut Eight_Cross_four_Multiplier.ncd 

@@ -1,0 +1,258 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.6
+//  \   \         Application : sch2hdl
+//  /   /         Filename : EIGHT_BITADDER.vf
+// /___/   /\     Timestamp : 01/10/2019 14:36:47
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog E:/project/schematic/ALU/EIGHT_BITADDER.vf -w E:/project/schematic/ALU/EIGHT_BITADDER.sch
+//Design Name: EIGHT_BITADDER
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module HALFADDER_MUSER_EIGHT_BITADDER(A, 
+                                      B, 
+                                      RESET, 
+                                      CARRY1, 
+                                      SUM1);
+
+    input A;
+    input B;
+    input RESET;
+   output CARRY1;
+   output SUM1;
+   
+   wire CARRY;
+   wire SUM;
+   
+   AND2  XLXI_1 (.I0(A), 
+                .I1(B), 
+                .O(CARRY));
+   XOR2  XLXI_2 (.I0(B), 
+                .I1(A), 
+                .O(SUM));
+   AND2  XLXI_3 (.I0(RESET), 
+                .I1(SUM), 
+                .O(SUM1));
+   AND2  XLXI_4 (.I0(CARRY), 
+                .I1(RESET), 
+                .O(CARRY1));
+endmodule
+`timescale 1ns / 1ps
+
+module FULLADDER_MUSER_EIGHT_BITADDER(A, 
+                                      B, 
+                                      CIN, 
+                                      RESET, 
+                                      OROUT, 
+                                      SUMOUT);
+
+    input A;
+    input B;
+    input CIN;
+    input RESET;
+   output OROUT;
+   output SUMOUT;
+   
+   wire XLXN_4;
+   wire XLXN_6;
+   wire XLXN_7;
+   
+   HALFADDER_MUSER_EIGHT_BITADDER  XLXI_1 (.A(B), 
+                                          .B(A), 
+                                          .RESET(RESET), 
+                                          .CARRY1(XLXN_7), 
+                                          .SUM1(XLXN_4));
+   HALFADDER_MUSER_EIGHT_BITADDER  XLXI_2 (.A(CIN), 
+                                          .B(XLXN_4), 
+                                          .RESET(RESET), 
+                                          .CARRY1(XLXN_6), 
+                                          .SUM1(SUMOUT));
+   OR2  XLXI_3 (.I0(XLXN_7), 
+               .I1(XLXN_6), 
+               .O(OROUT));
+endmodule
+`timescale 1ns / 1ps
+
+module FOUR_BITADDER2_MUSER_EIGHT_BITADDER(A0, 
+                                           A1, 
+                                           A2, 
+                                           A3, 
+                                           B0, 
+                                           B1, 
+                                           B2, 
+                                           B3, 
+                                           CIN, 
+                                           RESET, 
+                                           CAROUT, 
+                                           I0, 
+                                           I1, 
+                                           I2, 
+                                           I3);
+
+    input A0;
+    input A1;
+    input A2;
+    input A3;
+    input B0;
+    input B1;
+    input B2;
+    input B3;
+    input CIN;
+    input RESET;
+   output CAROUT;
+   output I0;
+   output I1;
+   output I2;
+   output I3;
+   
+   wire COUT;
+   wire S0;
+   wire S1;
+   wire S2;
+   wire S3;
+   wire XLXN_5;
+   wire XLXN_6;
+   wire XLXN_10;
+   
+   FULLADDER_MUSER_EIGHT_BITADDER  XLXI_1 (.A(A0), 
+                                          .B(B0), 
+                                          .CIN(CIN), 
+                                          .RESET(RESET), 
+                                          .OROUT(XLXN_5), 
+                                          .SUMOUT(S0));
+   FULLADDER_MUSER_EIGHT_BITADDER  XLXI_2 (.A(A1), 
+                                          .B(B1), 
+                                          .CIN(XLXN_5), 
+                                          .RESET(RESET), 
+                                          .OROUT(XLXN_6), 
+                                          .SUMOUT(S1));
+   FULLADDER_MUSER_EIGHT_BITADDER  XLXI_4 (.A(A3), 
+                                          .B(B3), 
+                                          .CIN(XLXN_10), 
+                                          .RESET(RESET), 
+                                          .OROUT(COUT), 
+                                          .SUMOUT(S3));
+   FULLADDER_MUSER_EIGHT_BITADDER  XLXI_5 (.A(A2), 
+                                          .B(B2), 
+                                          .CIN(XLXN_6), 
+                                          .RESET(RESET), 
+                                          .OROUT(XLXN_10), 
+                                          .SUMOUT(S2));
+   AND2  XLXI_6 (.I0(RESET), 
+                .I1(S0), 
+                .O(I0));
+   AND2  XLXI_7 (.I0(RESET), 
+                .I1(S1), 
+                .O(I1));
+   AND2  XLXI_8 (.I0(RESET), 
+                .I1(S2), 
+                .O(I2));
+   AND2  XLXI_9 (.I0(RESET), 
+                .I1(S3), 
+                .O(I3));
+   AND2  XLXI_10 (.I0(RESET), 
+                 .I1(COUT), 
+                 .O(CAROUT));
+endmodule
+`timescale 1ns / 1ps
+
+module EIGHT_BITADDER(A_0, 
+                      A_1, 
+                      A_2, 
+                      A_3, 
+                      A_4, 
+                      A_5, 
+                      A_6, 
+                      A_7, 
+                      B_0, 
+                      B_1, 
+                      B_2, 
+                      B_3, 
+                      B_4, 
+                      B_5, 
+                      B_6, 
+                      B_7, 
+                      RESET, 
+                      CROUT, 
+                      I_0, 
+                      I_1, 
+                      I_2, 
+                      I_3, 
+                      I_4, 
+                      I_5, 
+                      I_6, 
+                      I_7);
+
+    input A_0;
+    input A_1;
+    input A_2;
+    input A_3;
+    input A_4;
+    input A_5;
+    input A_6;
+    input A_7;
+    input B_0;
+    input B_1;
+    input B_2;
+    input B_3;
+    input B_4;
+    input B_5;
+    input B_6;
+    input B_7;
+    input RESET;
+   output CROUT;
+   output I_0;
+   output I_1;
+   output I_2;
+   output I_3;
+   output I_4;
+   output I_5;
+   output I_6;
+   output I_7;
+   
+   wire XLXN_3;
+   wire XLXN_13;
+   
+   FOUR_BITADDER2_MUSER_EIGHT_BITADDER  XLXI_1 (.A0(A_0), 
+                                               .A1(A_1), 
+                                               .A2(A_2), 
+                                               .A3(A_3), 
+                                               .B0(B_0), 
+                                               .B1(B_1), 
+                                               .B2(B_2), 
+                                               .B3(B_3), 
+                                               .CIN(XLXN_3), 
+                                               .RESET(RESET), 
+                                               .CAROUT(XLXN_13), 
+                                               .I0(I_0), 
+                                               .I1(I_1), 
+                                               .I2(I_2), 
+                                               .I3(I_3));
+   FOUR_BITADDER2_MUSER_EIGHT_BITADDER  XLXI_2 (.A0(A_4), 
+                                               .A1(A_5), 
+                                               .A2(A_6), 
+                                               .A3(A_7), 
+                                               .B0(B_4), 
+                                               .B1(B_5), 
+                                               .B2(B_6), 
+                                               .B3(B_7), 
+                                               .CIN(XLXN_13), 
+                                               .RESET(RESET), 
+                                               .CAROUT(CROUT), 
+                                               .I0(I_4), 
+                                               .I1(I_5), 
+                                               .I2(I_6), 
+                                               .I3(I_7));
+   GND  XLXI_3 (.G(XLXN_3));
+endmodule

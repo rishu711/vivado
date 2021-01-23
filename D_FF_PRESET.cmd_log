@@ -1,0 +1,1 @@
+sch2sym -intstyle ise -family artix7 -refsym D_FF_PRESET E:/project/schematic/ALU/D_FF_PRESET.sch E:/project/schematic/ALU/D_FF_PRESET.sym 

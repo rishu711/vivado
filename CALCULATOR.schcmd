@@ -1,0 +1,9 @@
+select figure at 1213 2713 8 -branches -sn=1
+select all in 1213 1770 3818 2713 -branches -enclosed -sn=1
+select figure at 3003 534 8 -branches -sn=1
+select figure at 3003 534 8 -branches -all -sn=1
+select figure at 3261 534 8 -branches -sn=1
+select figure at 3261 534 8 -branches -all -sn=1
+select figure at 3628 385 8 -branches -sn=1
+select figure at 4465 2040 8 -branches -sn=1
+select figure at 4465 2265 8 -branches -sn=1

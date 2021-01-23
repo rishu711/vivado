@@ -1,0 +1,7 @@
+select figure at -125 638 8 -wires -sn=1
+select figure at 490 1703 8 -wires -sn=1
+select figure at 490 1720 8 -wires -sn=1
+delete selection -sn=1
+select figure at 413 1640 8 -wires -sn=1
+delete selection -sn=1
+add autowire 1088 1712 304 1696 8 -sn=1

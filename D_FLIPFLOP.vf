@@ -1,0 +1,130 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.6
+//  \   \         Application : sch2hdl
+//  /   /         Filename : D_FLIPFLOP.vf
+// /___/   /\     Timestamp : 07/12/2018 14:20:14
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog E:/project/schematic/ALU/D_FLIPFLOP.vf -w E:/project/schematic/ALU/D_FLIPFLOP.sch
+//Design Name: D_FLIPFLOP
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module GATED_LATCH4_MUSER_D_FLIPFLOP(C, 
+                                     D, 
+                                     GATEO);
+
+    input C;
+    input D;
+   output GATEO;
+   
+   wire XLXN_1;
+   
+   OR2  XLXI_1 (.I0(D), 
+               .I1(XLXN_1), 
+               .O(GATEO));
+   INV  XLXI_2 (.I(C), 
+               .O(XLXN_1));
+endmodule
+`timescale 1ns / 1ps
+
+module JK_MASTERSLAVE_MUSER_D_FLIPFLOP(CLK, 
+                                       CLR, 
+                                       J, 
+                                       K, 
+                                       Qa, 
+                                       Qb);
+
+    input CLK;
+    input CLR;
+    input J;
+    input K;
+   output Qa;
+   output Qb;
+   
+   wire XLXN_8;
+   wire XLXN_9;
+   wire XLXN_12;
+   wire XLXN_15;
+   wire XLXN_17;
+   wire XLXN_18;
+   wire XLXN_19;
+   wire XLXN_21;
+   wire XLXN_26;
+   wire Qa_DUMMY;
+   wire Qb_DUMMY;
+   
+   assign Qa = Qa_DUMMY;
+   assign Qb = Qb_DUMMY;
+   NAND3  XLXI_1 (.I0(CLK), 
+                 .I1(J), 
+                 .I2(Qb_DUMMY), 
+                 .O(XLXN_9));
+   NAND3  XLXI_2 (.I0(Qa_DUMMY), 
+                 .I1(K), 
+                 .I2(CLK), 
+                 .O(XLXN_8));
+   NAND3  XLXI_3 (.I0(XLXN_8), 
+                 .I1(CLR), 
+                 .I2(XLXN_15), 
+                 .O(XLXN_17));
+   GATED_LATCH4_MUSER_D_FLIPFLOP  XLXI_4 (.C(CLR), 
+                                         .D(XLXN_9), 
+                                         .GATEO(XLXN_12));
+   INV  XLXI_5 (.I(CLK), 
+               .O(XLXN_19));
+   NAND2  XLXI_6 (.I0(XLXN_17), 
+                 .I1(XLXN_12), 
+                 .O(XLXN_15));
+   NAND2  XLXI_7 (.I0(XLXN_19), 
+                 .I1(XLXN_15), 
+                 .O(XLXN_21));
+   NAND2  XLXI_8 (.I0(XLXN_17), 
+                 .I1(XLXN_19), 
+                 .O(XLXN_18));
+   GATED_LATCH4_MUSER_D_FLIPFLOP  XLXI_10 (.C(CLR), 
+                                          .D(XLXN_21), 
+                                          .GATEO(XLXN_26));
+   NAND2  XLXI_11 (.I0(Qb_DUMMY), 
+                  .I1(XLXN_26), 
+                  .O(Qa_DUMMY));
+   NAND3  XLXI_13 (.I0(XLXN_18), 
+                  .I1(CLR), 
+                  .I2(Qa_DUMMY), 
+                  .O(Qb_DUMMY));
+endmodule
+`timescale 1ns / 1ps
+
+module D_FLIPFLOP(CLK, 
+                  CLR, 
+                  D, 
+                  Qa, 
+                  Qb);
+
+    input CLK;
+    input CLR;
+    input D;
+   output Qa;
+   output Qb;
+   
+   wire XLXN_10;
+   
+   JK_MASTERSLAVE_MUSER_D_FLIPFLOP  XLXI_1 (.CLK(CLK), 
+                                           .CLR(CLR), 
+                                           .J(D), 
+                                           .K(XLXN_10), 
+                                           .Qa(Qa), 
+                                           .Qb(Qb));
+   INV  XLXI_3 (.I(D), 
+               .O(XLXN_10));
+endmodule
